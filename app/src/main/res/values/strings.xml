@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AssignmentMain</string>
+    <string name="title_activity_second_window">SecondWindow</string>
+    <string name="title_activity_third_window">ThirdWindow</string>
 </resources>

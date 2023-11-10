@@ -1,46 +1,38 @@
 package com.example.assignmentmain
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.assignmentmain.ui.theme.AssignmentMainTheme
 
+@ExperimentalMaterial3Api
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            AssignmentMainTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
+            Column {
+                Text("Welcome to the main window")
+                Button(onClick = { startActivity(createIntentSecondWindow()) }) {
+                    Text("Next window")
                 }
             }
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    AssignmentMainTheme {
-        Greeting("Android")
+    private fun createIntentSecondWindow(): Intent {
+        var intent: Intent = Intent(this, SecondWindow::class.java)
+
+        return intent
+    }
+
+    private fun createIntentThirddWindow(): Intent {
+        var intent: Intent = Intent(this, ThirdWindow::class.java)
+
+        return intent
     }
 }
