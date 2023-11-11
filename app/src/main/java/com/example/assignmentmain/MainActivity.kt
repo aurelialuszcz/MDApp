@@ -30,6 +30,9 @@ class MainActivity : ComponentActivity() {
                     Button(onClick = { startActivity(createIntentSecondWindow()) }) {
                         Text("Upload your recipe here!", color = Color.LightGray)
                     }
+                    Button(onClick = { startActivity(createIntentThirddWindow())}) {
+                        Text("Look for similar recipes!", color = Color.LightGray)
+                    }
                 }
             }
         }
