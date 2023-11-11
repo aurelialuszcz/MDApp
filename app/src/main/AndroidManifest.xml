@@ -13,17 +13,17 @@
         android:theme="@style/Theme.AssignmentMain"
         tools:targetApi="31">
         <activity
-            android:name=".FourthWindow"
+            android:name=".ExistingRecipes"
             android:exported="false"
             android:label="@string/title_activity_fourth_window"
             android:theme="@style/Theme.AssignmentMain" />
         <activity
-            android:name=".ThirdWindow"
+            android:name=".AccessYoutube"
             android:exported="false"
             android:label="@string/title_activity_third_window"
             android:theme="@style/Theme.AssignmentMain" />
         <activity
-            android:name=".SecondWindow"
+            android:name=".UploadRecipe"
             android:exported="false"
             android:label="@string/title_activity_second_window"
             android:theme="@style/Theme.AssignmentMain" />

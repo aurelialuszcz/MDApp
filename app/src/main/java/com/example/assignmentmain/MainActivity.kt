@@ -27,13 +27,13 @@ class MainActivity : ComponentActivity() {
                     horizontalAlignment = Alignment.CenterHorizontally)
                 {
                     Text("Recipe Sharing", color = Color.DarkGray, fontSize = 30.sp)
-                    Button(onClick = { startActivity(createIntentFourthWindow()) }) {
+                    Button(onClick = { startActivity(createIntentRecipesWindow()) }) {
                         Text("Browse recipes", color = Color.LightGray)
                     }
-                    Button(onClick = { startActivity(createIntentSecondWindow()) }) {
+                    Button(onClick = { startActivity(createIntentUploadWindow()) }) {
                         Text("Upload your recipe here!", color = Color.LightGray)
                     }
-                    Button(onClick = { startActivity(createIntentThirdWindow())}) {
+                    Button(onClick = { startActivity(createIntentAccessYtWindow())}) {
                         Text("Look for similar recipes!", color = Color.LightGray)
                     }
                 }
@@ -42,20 +42,20 @@ class MainActivity : ComponentActivity() {
     }
 
 
-    private fun createIntentSecondWindow(): Intent {
-        var intent: Intent = Intent(this, SecondWindow::class.java)
+    private fun createIntentUploadWindow(): Intent {
+        var intent: Intent = Intent(this, UploadRecipe::class.java)
 
         return intent
     }
 
-    private fun createIntentThirdWindow(): Intent {
-        var intent: Intent = Intent(this, ThirdWindow::class.java)
+    private fun createIntentAccessYtWindow(): Intent {
+        var intent: Intent = Intent(this, AccessYoutube::class.java)
 
         return intent
     }
 
-    private fun createIntentFourthWindow(): Intent {
-        var intent: Intent = Intent(this, FourthWindow::class.java)
+    private fun createIntentRecipesWindow(): Intent {
+        var intent: Intent = Intent(this, ExistingRecipes::class.java)
 
         return intent
     }
