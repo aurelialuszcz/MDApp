@@ -10,12 +10,19 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.unit.sp
 
 class SecondWindow : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,15 +32,20 @@ class SecondWindow : ComponentActivity() {
                 uri.value = it
                 has_image.value = true
             }
-
-            Column {
-                Text("Insert your recipe here!")
-                Text("Upload your image!")
-                Button(onClick = { launcher.launch("image/*")}) {
-                    Text("Upload")
+            Surface(modifier = Modifier.fillMaxSize()) {
+                Column(
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                )
+                {
+                    Text("Insert your recipe here!", color = Color.Blue, fontSize = 16.sp)
+                    Text("Upload your image!")
+                    Button(onClick = { launcher.launch("image/*") }) {
+                        Text("Upload")
+                    }
+                    if (has_image.value)
+                        Image(bitmap = getImageBitmap(uri.value), contentDescription = null)
                 }
-                if(has_image.value)
-                    Image(bitmap = getImageBitmap(uri.value), contentDescription = null)
             }
         }
     }
