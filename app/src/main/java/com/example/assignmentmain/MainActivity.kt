@@ -27,10 +27,13 @@ class MainActivity : ComponentActivity() {
                     horizontalAlignment = Alignment.CenterHorizontally)
                 {
                     Text("Recipe Sharing", color = Color.DarkGray, fontSize = 30.sp)
+                    Button(onClick = { startActivity(createIntentFourthWindow()) }) {
+                        Text("Browse recipes", color = Color.LightGray)
+                    }
                     Button(onClick = { startActivity(createIntentSecondWindow()) }) {
                         Text("Upload your recipe here!", color = Color.LightGray)
                     }
-                    Button(onClick = { startActivity(createIntentThirddWindow())}) {
+                    Button(onClick = { startActivity(createIntentThirdWindow())}) {
                         Text("Look for similar recipes!", color = Color.LightGray)
                     }
                 }
@@ -45,8 +48,14 @@ class MainActivity : ComponentActivity() {
         return intent
     }
 
-    private fun createIntentThirddWindow(): Intent {
+    private fun createIntentThirdWindow(): Intent {
         var intent: Intent = Intent(this, ThirdWindow::class.java)
+
+        return intent
+    }
+
+    private fun createIntentFourthWindow(): Intent {
+        var intent: Intent = Intent(this, FourthWindow::class.java)
 
         return intent
     }
