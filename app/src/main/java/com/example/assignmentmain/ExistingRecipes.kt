@@ -27,13 +27,16 @@ class ExistingRecipes : ComponentActivity() {
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
+                    // Recipe title
                     Text("Burger", color = Color.DarkGray)
+                    // Recipe image
                     Image(
                         painter = burgerImg,
                         contentDescription = null,
                         modifier = Modifier.fillMaxWidth(),
                         contentScale = ContentScale.FillWidth
                     )
+                    // Recipe text
                     Text("Cook burger, stack toppings in a bun, voila!")
                 }
             }

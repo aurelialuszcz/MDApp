@@ -23,6 +23,7 @@ class AccessYoutube : ComponentActivity() {
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ){
+                    // Button to access youtube
                     Button(onClick = {
                         Intent(Intent.ACTION_MAIN).also {
                             it.`package` = "com.google.android.youtube"

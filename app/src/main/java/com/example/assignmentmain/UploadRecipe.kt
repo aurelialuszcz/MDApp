@@ -38,8 +38,11 @@ class UploadRecipe : ComponentActivity() {
                     horizontalAlignment = Alignment.CenterHorizontally
                 )
                 {
+                    // Window title
                     Text("Insert your recipe here!", color = Color.Blue, fontSize = 16.sp)
+                    // Instruction to upload
                     Text("Upload your image!")
+                    // Upload button
                     Button(onClick = { launcher.launch("image/*") }) {
                         Text("Upload")
                     }
@@ -50,6 +53,7 @@ class UploadRecipe : ComponentActivity() {
         }
     }
 
+    // Function to access image folder
     private fun getImageBitmap(image_uri: Uri?): ImageBitmap {
         if(Build.VERSION.SDK_INT >= 28) {
             var source = ImageDecoder.createSource(contentResolver, image_uri!!)

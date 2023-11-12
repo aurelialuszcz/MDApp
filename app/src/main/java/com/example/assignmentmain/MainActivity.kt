@@ -26,13 +26,17 @@ class MainActivity : ComponentActivity() {
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally)
                 {
+                    // Welcome title
                     Text("Recipe Sharing", color = Color.DarkGray, fontSize = 30.sp)
+                    // First activity button
                     Button(onClick = { startActivity(createIntentRecipesWindow()) }) {
                         Text("Browse recipes", color = Color.LightGray)
                     }
+                    // Second activity button
                     Button(onClick = { startActivity(createIntentUploadWindow()) }) {
                         Text("Upload your recipe here!", color = Color.LightGray)
                     }
+                    // Third activity button
                     Button(onClick = { startActivity(createIntentAccessYtWindow())}) {
                         Text("Look for similar recipes!", color = Color.LightGray)
                     }
@@ -41,7 +45,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-
+    // Creating intent for each activity
     private fun createIntentUploadWindow(): Intent {
         var intent: Intent = Intent(this, UploadRecipe::class.java)
 
