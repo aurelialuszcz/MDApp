@@ -56,6 +56,7 @@ class UploadRecipe : ComponentActivity() {
                     Button(onClick = {enterRecipe()}) {
                         Text("Submit")
                     }
+                    Text("${entered_text.value}")
                     }
                 }
             }
@@ -73,9 +74,11 @@ class UploadRecipe : ComponentActivity() {
     }
     
     fun enterRecipe() {
+        entered_text.value = recipe_text.value
     }
 
     var has_image = mutableStateOf(false)
     var uri = mutableStateOf<Uri?>(null)
     var recipe_text = mutableStateOf("Enter your recipe here!")
+    var entered_text = mutableStateOf(" ")
 }
