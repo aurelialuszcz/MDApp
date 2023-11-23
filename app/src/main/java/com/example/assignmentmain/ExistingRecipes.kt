@@ -32,8 +32,7 @@ class ExistingRecipes : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Surface(modifier = Modifier.fillMaxSize(),
-                color = Color.LightGray) {
+            Surface(modifier = Modifier.fillMaxSize(), color = Color(0xFFBDF0D1)) {
                 Column(
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
