@@ -1,6 +1,5 @@
 package com.example.assignmentmain
 
-import android.content.Intent
 import android.graphics.ImageDecoder
 import android.net.Uri
 import android.os.Build
@@ -12,7 +11,6 @@ import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,7 +19,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.mutableStateOf
@@ -30,7 +27,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -44,31 +43,54 @@ class UploadRecipe : ComponentActivity() {
                 has_image.value = true
             }
             Box(modifier = Modifier.fillMaxSize()) {
+                // Window title
+                Column (
+                    modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp),
+                    verticalArrangement = Arrangement.Top,
+                    horizontalAlignment = Alignment.CenterHorizontally,){
+                    Text("Recipe Upload",
+                        color = Color.DarkGray,
+                        fontFamily = FontFamily.Serif,
+                        fontSize = 36.sp,
+                        fontWeight = FontWeight.Bold,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.padding(vertical = 16.dp))
+                }
+
+                // Uploading image + text
                 Column(
-                    modifier = Modifier.fillMaxSize().padding(16.dp),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(16.dp),
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally,
                     )
                 {
-                    // Window title
-                    Box (modifier = Modifier.padding(20.dp)){
-                        Text("Insert your recipe here!", color = Color.Blue, fontSize = 16.sp)
-                    }
-
                     TextField(value = recipe_text.value, onValueChange = {recipe_text.value = it},
-                        modifier = Modifier.padding(8.dp).background(color = Color.Gray))
-                    // Upload button
+                        modifier = Modifier
+                            .padding(8.dp)
+                            .background(color = Color.Gray))
+                    // Image upload button
                     Button(onClick = { launcher.launch("image/*") },
-                        modifier = Modifier.padding(8.dp).background(color = Color.Gray)) {
+                        modifier = Modifier
+                            .padding(8.dp)
+                            .background(color = Color.Gray)) {
                         Text("Upload", color = Color.White)
                     }
+                    // Text upload button
                     Button(onClick = {enterRecipe()},
-                        modifier = Modifier.padding(8.dp).background(color = Color.Gray)) {
+                        modifier = Modifier
+                            .padding(8.dp)
+                            .background(color = Color.Gray)) {
                         Text("Submit", color = Color.White)
                     }
                     if (has_image.value)
                         Image(bitmap = getImageBitmap(uri.value), contentDescription = null,
-                            modifier = Modifier.padding(8.dp).size(200.dp))
+                            modifier = Modifier
+                                .padding(8.dp)
+                                .size(200.dp))
                     Text("${entered_text.value}", color = Color.White)
                     }
                 }
@@ -85,6 +107,7 @@ class UploadRecipe : ComponentActivity() {
             return MediaStore.Images.Media.getBitmap(contentResolver, image_uri!!).asImageBitmap()
         }
     }
+    // Function to show the entered text to the screen
     fun enterRecipe() {
         entered_text.value = recipe_text.value
     }
