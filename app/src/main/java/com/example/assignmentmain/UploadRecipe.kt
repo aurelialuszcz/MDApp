@@ -43,7 +43,7 @@ class UploadRecipe : ComponentActivity() {
                 uri.value = it
                 has_image.value = true
             }
-            Box(modifier = Modifier.fillMaxSize().background(color = Color(0xFFBDF0D1))) {
+            Box(modifier = Modifier.fillMaxSize()) {
                 Column(
                     modifier = Modifier.fillMaxSize().padding(16.dp),
                     verticalArrangement = Arrangement.Center,

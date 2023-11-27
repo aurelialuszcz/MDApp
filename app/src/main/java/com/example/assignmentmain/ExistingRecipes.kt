@@ -5,34 +5,40 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 class ExistingRecipes : ComponentActivity() {
+    @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Surface(modifier = Modifier.fillMaxSize(), color = Color(0xFFBDF0D1)) {
+            Surface(modifier = Modifier.fillMaxSize()) {
                 Column(
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
@@ -47,26 +53,28 @@ class ExistingRecipes : ComponentActivity() {
     @Preview
     @Composable
     fun burger() {
-        val burgerImg = painterResource(id = R.drawable.burger)
-        Box (modifier = Modifier
+        val burgerImg = painterResource(id = R.drawable.burger2)
+        Card(modifier = Modifier
             .background(Color.LightGray)
             .width(250.dp)
             .height(250.dp)
-            .padding(20.dp)
-            .border(1.dp, Color.Black)) {
-            Column {
+            .padding(10.dp)
+            .wrapContentSize(Alignment.Center),
+            content = {
                 // Recipe title
-                Text("Burger", color = Color.DarkGray)
+                Text("Burger", fontSize = 16.sp, fontWeight = FontWeight.Bold)
                 // Recipe image
                 Image(
                     painter = burgerImg,
                     contentDescription = null,
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier.size(150.dp).clip(CircleShape),
                     contentScale = ContentScale.FillWidth
                 )
-                // Recipe text
-                Text("Cook burger, stack toppings in a bun, voila!")
-            }
+                Button(onClick = { }) {
+                    Text("See more")
+                }
+                }
+        )
         }
     }
 
@@ -74,24 +82,50 @@ class ExistingRecipes : ComponentActivity() {
     @Composable
     fun pizza() {
         val pizzaImg = painterResource(id = R.drawable.pizza)
-        Box (modifier = Modifier
+        Card(modifier = Modifier
             .background(Color.LightGray)
             .width(250.dp)
             .height(250.dp)
-            .padding(10.dp)){
-            Column {
+            .padding(10.dp)
+            .wrapContentSize(Alignment.Center),
+            content = {
                 // Recipe title
-                Text("Pizza", color = Color.DarkGray)
+                Text("Pizza", fontSize = 16.sp, fontWeight = FontWeight.Bold)
                 // Recipe image
                 Image(
                     painter = pizzaImg,
                     contentDescription = null,
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier.size(150.dp).clip(CircleShape),
                     contentScale = ContentScale.FillWidth
                 )
-                // Recipe text
-                Text("Stack toppings on a pizza, voila!")
-            }
-        }
+                Button(onClick = { }) {
+                    Text("See more")
+                }
+        })
     }
+
+@Preview
+@Composable
+fun pasta() {
+    val pastaImg = painterResource(id = R.drawable.pasta)
+    Card(modifier = Modifier
+        .background(Color.LightGray)
+        .width(250.dp)
+        .height(250.dp)
+        .padding(10.dp)
+        .wrapContentSize(Alignment.Center),
+        content = {
+            // Recipe title
+            Text("Pasta", fontSize = 16.sp, fontWeight = FontWeight.Bold)
+            // Recipe image
+            Image(
+                painter = pastaImg,
+                contentDescription = null,
+                modifier = Modifier.size(150.dp).clip(CircleShape),
+                contentScale = ContentScale.FillWidth
+            )
+            Button(onClick = { }) {
+                Text("See more")
+            }
+        })
 }
