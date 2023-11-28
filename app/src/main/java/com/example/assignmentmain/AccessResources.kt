@@ -36,6 +36,10 @@ class AccessResources : ComponentActivity() {
             val youtubeIcon = painterResource(id = R.drawable.youtube)
             val googleIcon = painterResource(id = R.drawable.google)
             Surface(modifier = Modifier.fillMaxSize()) {
+                Image(painter = painterResource(id = R.drawable.background),
+                    contentDescription = "background",
+                    contentScale = ContentScale.FillHeight,
+                )
                 Column(
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally

@@ -44,11 +44,15 @@ class UploadRecipe : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            var launcher = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) {
+            val launcher = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) {
                 uri.value = it
                 has_image.value = true
             }
             Box(modifier = Modifier.fillMaxSize()) {
+                /*Image(painter = painterResource(id = R.drawable.background),
+                    contentDescription = "background",
+                    contentScale = ContentScale.FillHeight,
+                )*/
                 // Window title
                 Column (
                     modifier = Modifier
@@ -121,7 +125,7 @@ class UploadRecipe : ComponentActivity() {
     // Function to access image folder
     private fun getImageBitmap(image_uri: Uri?): ImageBitmap {
         if(Build.VERSION.SDK_INT >= 28) {
-            var source = ImageDecoder.createSource(contentResolver, image_uri!!)
+            val source = ImageDecoder.createSource(contentResolver, image_uri!!)
             return ImageDecoder.decodeBitmap(source).asImageBitmap()
         } else {
             return MediaStore.Images.Media.getBitmap(contentResolver, image_uri!!).asImageBitmap()

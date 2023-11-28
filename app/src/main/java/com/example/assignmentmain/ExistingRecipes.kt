@@ -43,15 +43,19 @@ class ExistingRecipes : ComponentActivity() {
             Surface (
                 modifier = Modifier.fillMaxWidth()
             ){
+                /*Image(painter = painterResource(id = R.drawable.background),
+                    contentDescription = "background",
+                    contentScale = ContentScale.FillHeight,
+                )*/
                 FlowRow(
                     horizontalArrangement = Arrangement.SpaceBetween,
                     modifier = Modifier.verticalScroll(rememberScrollState())
                 ) {
-                    title()
-                    burger()
-                    pizza()
-                    pasta()
-                    hummus()
+                    Title()
+                    Burger()
+                    Pizza()
+                    Pasta()
+                    Hummus()
                 }
             }
         }
@@ -60,7 +64,7 @@ class ExistingRecipes : ComponentActivity() {
 
     // Function to create title of the page
     @Composable
-    fun title() {
+    fun Title() {
         Text(
             "Recipes",
             color = Color.DarkGray,
@@ -75,7 +79,7 @@ class ExistingRecipes : ComponentActivity() {
     // Burger card
     @Preview
     @Composable
-    fun burger() {
+    fun Burger() {
         val burgerImg = painterResource(id = R.drawable.burger)
         Card(elevation = CardDefaults.cardElevation(
             defaultElevation = 6.dp
@@ -109,7 +113,7 @@ class ExistingRecipes : ComponentActivity() {
     // Pizza card
     @Preview
     @Composable
-    fun pizza() {
+    fun Pizza() {
         val pizzaImg = painterResource(id = R.drawable.pizza)
         Card(elevation = CardDefaults.cardElevation(
             defaultElevation = 6.dp
@@ -140,7 +144,7 @@ class ExistingRecipes : ComponentActivity() {
     // Pasta card
     @Preview
     @Composable
-    fun pasta() {
+    fun Pasta() {
         val pastaImg = painterResource(id = R.drawable.pasta)
         Card(elevation = CardDefaults.cardElevation(
             defaultElevation = 6.dp
@@ -171,7 +175,7 @@ class ExistingRecipes : ComponentActivity() {
     // Hummus card
     @Preview
     @Composable
-    fun hummus() {
+    fun Hummus() {
         val hummusImg = painterResource(id = R.drawable.hummus)
         Card(elevation = CardDefaults.cardElevation(
             defaultElevation = 6.dp
@@ -200,25 +204,25 @@ class ExistingRecipes : ComponentActivity() {
     }
 
     private fun burgerRecipe(): Intent {
-        var intent: Intent = Intent(this, BurgerRecipe::class.java)
+        val intent = Intent(this, BurgerRecipe::class.java)
 
         return intent
     }
 
     private fun pizzaRecipe() : Intent {
-    var intent: Intent = Intent(this, PizzaRecipe::class.java)
+    val intent = Intent(this, PizzaRecipe::class.java)
 
     return intent
     }
 
     private fun pastaRecipe() : Intent {
-        var intent: Intent = Intent(this, PastaRecipe::class.java)
+        val intent = Intent(this, PastaRecipe::class.java)
 
         return intent
     }
 
     private fun hummusRecipe() : Intent {
-        var intent: Intent = Intent(this, HummusRecipe::class.java)
+        val intent = Intent(this, HummusRecipe::class.java)
 
         return intent
     }
