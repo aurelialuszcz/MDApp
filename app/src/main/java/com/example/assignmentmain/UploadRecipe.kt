@@ -91,7 +91,7 @@ class UploadRecipe : ComponentActivity() {
                             modifier = Modifier
                                 .padding(8.dp)
                                 .size(200.dp))
-                    Text("${entered_text.value}", color = Color.White)
+                    Text("${entered_text.value}", color = Color.Black)
                     }
                 }
             }

@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowColumn
 import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -42,35 +43,48 @@ class ExistingRecipes : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-                Column {
-                    title()
-                }
-                FlowRow(
-                    //verticalArrangement = Arrangement.Center,
-                    horizontalArrangement = Arrangement.SpaceEvenly,
+            Column {
+                title()
+            }
+            Row {
+                Column(
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier
                         .verticalScroll(rememberScrollState())
                         .padding(2.dp)
                 ) {
                     burger()
                     pizza()
+
+                }
+                Column(
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier
+                        .verticalScroll(rememberScrollState())
+                        .padding(2.dp)
+                ) {
                     pasta()
                     hummus()
                 }
             }
         }
+    }
     //}
 
     // Function to create title of the page
     @Composable
     fun title() {
-        Text("Recipes",
+        Text(
+            "Recipes",
             color = Color.DarkGray,
             fontFamily = FontFamily.Serif,
             fontSize = 36.sp,
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center,
-            modifier = Modifier.padding(vertical = 16.dp))
+            modifier = Modifier.padding(vertical = 16.dp)
+        )
     }
 
     // Burger card
@@ -99,10 +113,10 @@ class ExistingRecipes : ComponentActivity() {
                 Button(onClick = { }) {
                     Text("See more")
                 }
-                }
+            }
         )
-        }
     }
+
 
     // Pizza card
     @Preview
@@ -130,63 +144,64 @@ class ExistingRecipes : ComponentActivity() {
                 Button(onClick = { }) {
                     Text("See more")
                 }
-        })
+            })
     }
 
-// Pasta card
-@Preview
-@Composable
-fun pasta() {
-    val pastaImg = painterResource(id = R.drawable.pasta)
-    Card(modifier = Modifier
-        .width(220.dp)
-        .height(220.dp)
-        .padding(10.dp)
-        .wrapContentSize(Alignment.Center),
-        content = {
-            // Recipe title
-            Text("Pasta", fontSize = 16.sp, fontWeight = FontWeight.Bold)
-            // Recipe image
-            Image(
-                painter = pastaImg,
-                contentDescription = null,
-                modifier = Modifier
-                    .size(150.dp)
-                    //.clip(CircleShape)
-                    .aspectRatio(16f / 9f),
-                contentScale = ContentScale.FillWidth
-            )
-            Button(onClick = { }) {
-                Text("See more")
-            }
-        })
-}
+    // Pasta card
+    @Preview
+    @Composable
+    fun pasta() {
+        val pastaImg = painterResource(id = R.drawable.pasta)
+        Card(modifier = Modifier
+            .width(220.dp)
+            .height(220.dp)
+            .padding(10.dp)
+            .wrapContentSize(Alignment.Center),
+            content = {
+                // Recipe title
+                Text("Pasta", fontSize = 16.sp, fontWeight = FontWeight.Bold)
+                // Recipe image
+                Image(
+                    painter = pastaImg,
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(150.dp)
+                        //.clip(CircleShape)
+                        .aspectRatio(16f / 9f),
+                    contentScale = ContentScale.FillWidth
+                )
+                Button(onClick = { }) {
+                    Text("See more")
+                }
+            })
+    }
 
-// Hummus card
-@Preview
-@Composable
-fun hummus() {
-    val hummusImg = painterResource(id = R.drawable.hummus)
-    Card(modifier = Modifier
-        .width(220.dp)
-        .height(220.dp)
-        .padding(10.dp)
-        .wrapContentSize(Alignment.Center),
-        content = {
-            // Recipe title
-            Text("Beetroot hummus", fontSize = 16.sp, fontWeight = FontWeight.Bold)
-            // Recipe image
-            Image(
-                painter = hummusImg,
-                contentDescription = null,
-                modifier = Modifier
-                    .size(150.dp)
-                    .aspectRatio(16f / 9f),
+    // Hummus card
+    @Preview
+    @Composable
+    fun hummus() {
+        val hummusImg = painterResource(id = R.drawable.hummus)
+        Card(modifier = Modifier
+            .width(220.dp)
+            .height(220.dp)
+            .padding(10.dp)
+            .wrapContentSize(Alignment.Center),
+            content = {
+                // Recipe title
+                Text("Beetroot hummus", fontSize = 16.sp, fontWeight = FontWeight.Bold)
+                // Recipe image
+                Image(
+                    painter = hummusImg,
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(150.dp)
+                        .aspectRatio(16f / 9f),
                     //clip(CircleShape),
-                contentScale = ContentScale.FillWidth
-            )
-            Button(onClick = { }) {
-                Text("See more")
-            }
-        })
+                    contentScale = ContentScale.FillWidth
+                )
+                Button(onClick = { }) {
+                    Text("See more")
+                }
+            })
+    }
 }
