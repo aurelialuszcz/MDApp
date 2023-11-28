@@ -4,14 +4,15 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowColumn
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -22,6 +23,9 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CardElevation
+import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -43,28 +47,16 @@ class ExistingRecipes : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Column {
-                title()
-            }
-            Row {
-                Column(
-                    verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier
-                        .verticalScroll(rememberScrollState())
-                        .padding(2.dp)
+            Surface (
+                modifier = Modifier.fillMaxWidth()
+            ){
+                FlowRow(
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    modifier = Modifier.verticalScroll(rememberScrollState())
                 ) {
+                    title()
                     burger()
                     pizza()
-
-                }
-                Column(
-                    verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier
-                        .verticalScroll(rememberScrollState())
-                        .padding(2.dp)
-                ) {
                     pasta()
                     hummus()
                 }
@@ -92,11 +84,14 @@ class ExistingRecipes : ComponentActivity() {
     @Composable
     fun burger() {
         val burgerImg = painterResource(id = R.drawable.burger)
-        Card(modifier = Modifier
-            .width(220.dp)
-            .height(220.dp)
-            .padding(5.dp)
-            .wrapContentSize(Alignment.Center),
+        Card(elevation = CardDefaults.cardElevation(
+            defaultElevation = 6.dp
+        ),
+            modifier = Modifier
+                .width(250.dp)
+                .height(250.dp)
+                .padding(5.dp)
+                .wrapContentSize(Alignment.Center),
             content = {
                 // Recipe title
                 Text("Burger", fontSize = 16.sp, fontWeight = FontWeight.Bold)
@@ -123,9 +118,11 @@ class ExistingRecipes : ComponentActivity() {
     @Composable
     fun pizza() {
         val pizzaImg = painterResource(id = R.drawable.pizza)
-        Card(modifier = Modifier
-            .width(220.dp)
-            .height(220.dp)
+        Card(elevation = CardDefaults.cardElevation(
+            defaultElevation = 6.dp
+        ),modifier = Modifier
+            .width(250.dp)
+            .height(250.dp)
             .padding(5.dp)
             .wrapContentSize(Alignment.Center),
             content = {
@@ -152,10 +149,12 @@ class ExistingRecipes : ComponentActivity() {
     @Composable
     fun pasta() {
         val pastaImg = painterResource(id = R.drawable.pasta)
-        Card(modifier = Modifier
-            .width(220.dp)
-            .height(220.dp)
-            .padding(10.dp)
+        Card(elevation = CardDefaults.cardElevation(
+            defaultElevation = 6.dp
+        ),modifier = Modifier
+            .width(250.dp)
+            .height(250.dp)
+            .padding(5.dp)
             .wrapContentSize(Alignment.Center),
             content = {
                 // Recipe title
@@ -181,10 +180,12 @@ class ExistingRecipes : ComponentActivity() {
     @Composable
     fun hummus() {
         val hummusImg = painterResource(id = R.drawable.hummus)
-        Card(modifier = Modifier
-            .width(220.dp)
-            .height(220.dp)
-            .padding(10.dp)
+        Card(elevation = CardDefaults.cardElevation(
+            defaultElevation = 6.dp
+        ),modifier = Modifier
+            .width(250.dp)
+            .height(250.dp)
+            .padding(5.dp)
             .wrapContentSize(Alignment.Center),
             content = {
                 // Recipe title

@@ -10,7 +10,9 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
@@ -32,45 +34,64 @@ class AccessYoutube : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val youtubeIcon = painterResource(id = R.drawable.youtube)
+            val googleIcon = painterResource(id = R.drawable.google)
             Surface(modifier = Modifier.fillMaxSize()) {
                 Column(
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ){
-                   // Youtube image
-                    Image(
-                        painter = youtubeIcon,
-                        contentDescription = null,
-                        modifier = Modifier.size(30.dp),
-                        contentScale = ContentScale.FillWidth
-                    )
                     // Text to search on youtube
                     TextField(value = recipe_lookup.value, onValueChange = {recipe_lookup.value = it},
                         modifier = Modifier
                             .padding(8.dp)
-                            .background(color = Color.Gray))
-                    // Button to access youtube
-                    Button(onClick = {
-                        /*Intent(Intent.ACTION_SEARCH).also {
-                            it.`package` = "com.google.android.youtube"
-                            intent.putExtra(SearchManager.QUERY, recipe_lookup.value)
-                            try {
-                                startActivity(it)
-                            } catch (e: ActivityNotFoundException) {
-                                e.printStackTrace()
-                            }*/
-                        val searchIntent = Intent(Intent.ACTION_SEARCH)
-                        searchIntent.setPackage("com.google.android.youtube")
-                        searchIntent.putExtra(SearchManager.QUERY, recipe_lookup.value)
-                        try {
-                            startActivity(searchIntent)
-                        } catch (e: ActivityNotFoundException) {
-                            e.printStackTrace()
+                            .background(color = Color.Gray)
+                            .fillMaxWidth())
+                    Column {
+                        Row {
+                            Image(
+                                painter = youtubeIcon,
+                                contentDescription = null,
+                                modifier = Modifier.size(50.dp),
+                                contentScale = ContentScale.FillWidth
+                            )
+                            // Button to access youtube
+                            Button(onClick = {
+                                // Passing text field value for youtube search
+                                val searchIntent = Intent(Intent.ACTION_SEARCH)
+                                searchIntent.setPackage("com.google.android.youtube")
+                                searchIntent.putExtra(SearchManager.QUERY, recipe_lookup.value)
+                                try {
+                                    startActivity(searchIntent)
+                                } catch (e: ActivityNotFoundException) {
+                                    e.printStackTrace()
+                                }
+                            }
+                            , modifier = Modifier.padding(5.dp))
+                            {
+                                Text("Go to Youtube")
+                            }
                         }
+                        Row {
+                            Image(
+                                painter = googleIcon,
+                                contentDescription = null,
+                                modifier = Modifier.size(50.dp),
+                                contentScale = ContentScale.FillWidth
+                            )
+                            Button(onClick = {
+                                // Passing text field value for google search
+                                val searchIntent2 = Intent(Intent.ACTION_WEB_SEARCH)
+                                searchIntent2.putExtra(SearchManager.QUERY, recipe_lookup.value)
+                                try {
+                                    startActivity(searchIntent2)
+                                } catch (e: ActivityNotFoundException) {
+                                    e.printStackTrace()
+                                }
+                            }
+                                , modifier = Modifier.padding(5.dp)) {
+                                Text("Go to Google")
+                            }
                         }
-                    )
-                    {
-                        Text("Go to Youtube")
                     }
                 }
             }
