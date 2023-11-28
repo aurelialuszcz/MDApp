@@ -1,5 +1,6 @@
 package com.example.assignmentmain
 
+import android.annotation.SuppressLint
 import android.graphics.ImageDecoder
 import android.net.Uri
 import android.os.Build
@@ -38,6 +39,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 class UploadRecipe : ComponentActivity() {
+    @SuppressLint("SuspiciousIndentation")
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

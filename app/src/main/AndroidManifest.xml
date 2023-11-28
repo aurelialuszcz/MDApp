@@ -12,6 +12,26 @@
         android:supportsRtl="true"
         tools:targetApi="31">
         <activity
+            android:name=".HummusRecipe"
+            android:exported="false"
+            android:label="@string/title_activity_hummus_recipe"
+            android:theme="@style/Theme.AssignmentMain" />
+        <activity
+            android:name=".PastaRecipe"
+            android:exported="false"
+            android:label="@string/title_activity_pasta_recipe"
+            android:theme="@style/Theme.AssignmentMain" />
+        <activity
+            android:name=".PizzaRecipe"
+            android:exported="false"
+            android:label="@string/title_activity_pizza_recipe"
+            android:theme="@style/Theme.AssignmentMain" />
+        <activity
+            android:name=".BurgerRecipe"
+            android:exported="false"
+            android:label="@string/title_activity_burger_recipe"
+            android:theme="@style/Theme.AssignmentMain" />
+        <activity
             android:name=".ExistingRecipes"
             android:exported="false"
             android:label="@string/title_activity_fourth_window"

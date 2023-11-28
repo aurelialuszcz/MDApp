@@ -1,5 +1,6 @@
 package com.example.assignmentmain
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -86,7 +87,7 @@ class ExistingRecipes : ComponentActivity() {
                 .wrapContentSize(Alignment.Center),
             content = {
                 // Recipe title
-                Text("Burger", fontSize = 16.sp, fontWeight = FontWeight.Bold)
+                Text("Burger", fontSize = 16.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
                 // Recipe image
                 Image(
                     painter = burgerImg,
@@ -97,7 +98,7 @@ class ExistingRecipes : ComponentActivity() {
                         .aspectRatio(16f / 9f),
                     contentScale = ContentScale.FillWidth
                 )
-                Button(onClick = { }) {
+                Button(onClick = { startActivity(burgerRecipe()) }) {
                     Text("See more")
                 }
             }
@@ -119,7 +120,7 @@ class ExistingRecipes : ComponentActivity() {
             .wrapContentSize(Alignment.Center),
             content = {
                 // Recipe title
-                Text("Pizza", fontSize = 16.sp, fontWeight = FontWeight.Bold)
+                Text("Pizza", fontSize = 16.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
                 // Recipe image
                 Image(
                     painter = pizzaImg,
@@ -130,7 +131,7 @@ class ExistingRecipes : ComponentActivity() {
                         .aspectRatio(16f / 9f),
                     contentScale = ContentScale.FillWidth
                 )
-                Button(onClick = { }) {
+                Button(onClick = { startActivity(pizzaRecipe()) }) {
                     Text("See more")
                 }
             })
@@ -150,7 +151,7 @@ class ExistingRecipes : ComponentActivity() {
             .wrapContentSize(Alignment.Center),
             content = {
                 // Recipe title
-                Text("Pasta", fontSize = 16.sp, fontWeight = FontWeight.Bold)
+                Text("Pasta", fontSize = 16.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
                 // Recipe image
                 Image(
                     painter = pastaImg,
@@ -161,7 +162,7 @@ class ExistingRecipes : ComponentActivity() {
                         .aspectRatio(16f / 9f),
                     contentScale = ContentScale.FillWidth
                 )
-                Button(onClick = { }) {
+                Button(onClick = { startActivity(pastaRecipe()) }) {
                     Text("See more")
                 }
             })
@@ -181,7 +182,7 @@ class ExistingRecipes : ComponentActivity() {
             .wrapContentSize(Alignment.Center),
             content = {
                 // Recipe title
-                Text("Beetroot hummus", fontSize = 16.sp, fontWeight = FontWeight.Bold)
+                Text("Beetroot hummus", fontSize = 16.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
                 // Recipe image
                 Image(
                     painter = hummusImg,
@@ -192,9 +193,33 @@ class ExistingRecipes : ComponentActivity() {
                     //clip(CircleShape),
                     contentScale = ContentScale.FillWidth
                 )
-                Button(onClick = { }) {
+                Button(onClick = { startActivity(hummusRecipe()) }) {
                     Text("See more")
                 }
             })
+    }
+
+    private fun burgerRecipe(): Intent {
+        var intent: Intent = Intent(this, BurgerRecipe::class.java)
+
+        return intent
+    }
+
+    private fun pizzaRecipe() : Intent {
+    var intent: Intent = Intent(this, PizzaRecipe::class.java)
+
+    return intent
+    }
+
+    private fun pastaRecipe() : Intent {
+        var intent: Intent = Intent(this, PastaRecipe::class.java)
+
+        return intent
+    }
+
+    private fun hummusRecipe() : Intent {
+        var intent: Intent = Intent(this, HummusRecipe::class.java)
+
+        return intent
     }
 }

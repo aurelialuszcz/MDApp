@@ -3,4 +3,8 @@
     <string name="title_activity_second_window">SecondWindow</string>
     <string name="title_activity_third_window">ThirdWindow</string>
     <string name="title_activity_fourth_window">FourthWindow</string>
+    <string name="title_activity_burger_recipe">BurgerRecipe</string>
+    <string name="title_activity_pizza_recipe">PizzaRecipe</string>
+    <string name="title_activity_pasta_recipe">PastaRecipe</string>
+    <string name="title_activity_hummus_recipe">HummusRecipe</string>
 </resources>
