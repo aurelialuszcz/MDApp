@@ -15,9 +15,13 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -46,8 +50,8 @@ class UploadRecipe : ComponentActivity() {
                 // Window title
                 Column (
                     modifier = Modifier
-                    .fillMaxSize()
-                    .padding(16.dp),
+                        .fillMaxSize()
+                        .padding(16.dp),
                     verticalArrangement = Arrangement.Top,
                     horizontalAlignment = Alignment.CenterHorizontally,){
                     Text("Recipe Upload",
@@ -68,31 +72,45 @@ class UploadRecipe : ComponentActivity() {
                     horizontalAlignment = Alignment.CenterHorizontally,
                     )
                 {
-                    TextField(value = recipe_text.value, onValueChange = {recipe_text.value = it},
+                    TextField(
+                        value = recipe_text.value, onValueChange = { recipe_text.value = it },
                         modifier = Modifier
                             .padding(8.dp)
-                            .background(color = Color.Gray))
+                    )
                     // Image upload button
-                    Button(onClick = { launcher.launch("image/*") },
+                    Button(
+                        onClick = { launcher.launch("image/*") },
                         modifier = Modifier
                             .padding(8.dp)
-                            .background(color = Color.Gray)) {
+                    ) {
                         Text("Upload", color = Color.White)
                     }
                     // Text upload button
-                    Button(onClick = {enterRecipe()},
+                    Button(
+                        onClick = { enterRecipe() },
                         modifier = Modifier
                             .padding(8.dp)
-                            .background(color = Color.Gray)) {
+                    ) {
                         Text("Submit", color = Color.White)
                     }
-                    if (has_image.value)
-                        Image(bitmap = getImageBitmap(uri.value), contentDescription = null,
-                            modifier = Modifier
-                                .padding(8.dp)
-                                .size(200.dp))
-                    Text("${entered_text.value}", color = Color.Black)
+                    Card (//elevation = CardDefaults.cardElevation(
+                        //defaultElevation = 6.dp
+                    //),
+                        modifier = Modifier.width(250.dp)
+                            .height(250.dp)
+                            .padding(5.dp)
+                            .wrapContentSize(Alignment.Center)
+                            .background(Color.White)){
+                        if (has_image.value)
+                            Image(
+                                bitmap = getImageBitmap(uri.value), contentDescription = null,
+                                modifier = Modifier
+                                    .padding(8.dp)
+                                    .size(200.dp)
+                            )
+                            Text("${entered_text.value}", color = Color.Black, textAlign = TextAlign.Center)
                     }
+                }
                 }
             }
         }

@@ -80,7 +80,7 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun createIntentAccessYtWindow(): Intent {
-        var intent: Intent = Intent(this, AccessYoutube::class.java)
+        var intent: Intent = Intent(this, AccessResources::class.java)
 
         return intent
     }

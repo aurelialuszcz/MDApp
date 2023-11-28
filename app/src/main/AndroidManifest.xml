@@ -17,7 +17,7 @@
             android:label="@string/title_activity_fourth_window"
             android:theme="@style/Theme.AssignmentMain" />
         <activity
-            android:name=".AccessYoutube"
+            android:name=".AccessResources"
             android:exported="false"
             android:label="@string/title_activity_third_window"
             android:theme="@style/Theme.AssignmentMain" />
