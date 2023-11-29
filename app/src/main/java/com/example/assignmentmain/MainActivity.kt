@@ -1,6 +1,9 @@
 package com.example.assignmentmain
 
+import android.app.Activity
 import android.content.Intent
+import android.content.pm.ActivityInfo
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -14,10 +17,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -78,6 +84,7 @@ class MainActivity : ComponentActivity() {
                             Text("SEARCH")
                         }
                     }
+                    Orientation()
                 }
             }
         }
@@ -100,5 +107,23 @@ class MainActivity : ComponentActivity() {
         val intent = Intent(this, ExistingRecipes::class.java)
 
         return intent
+    }
+
+    @Composable
+    fun Orientation() {
+        val activity = LocalContext.current as Activity
+        val configuration = LocalConfiguration.current
+
+        Button(onClick = {
+            if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+            }
+            else {
+                activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+            }
+        }) {
+            Text("Toggle Orientation")
+        }
+
     }
 }
