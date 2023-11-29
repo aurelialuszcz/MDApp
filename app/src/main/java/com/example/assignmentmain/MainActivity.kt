@@ -1,9 +1,14 @@
 package com.example.assignmentmain
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.res.Configuration
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -18,6 +23,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -85,6 +91,8 @@ class MainActivity : ComponentActivity() {
                         }
                     }
                     Orientation()
+                    Text(light.value, color = Color.White)
+                    registerSensorListeners()
                 }
             }
         }
@@ -126,4 +134,25 @@ class MainActivity : ComponentActivity() {
         }
 
     }
+
+    private fun registerSensorListeners() {
+
+        var sm: SensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+
+        if(sm.getDefaultSensor(Sensor.TYPE_LIGHT) != null)
+            sm.registerListener(light_listener, sm.getDefaultSensor(Sensor.TYPE_LIGHT), SensorManager.SENSOR_DELAY_UI)
+    }
+
+    private var light_listener: SensorEventListener = object : SensorEventListener {
+        override fun onSensorChanged(event: SensorEvent?) {
+            light.value = "light: ${event!!.values[0]} lux"
+        }
+
+        override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
+
+        }
+    }
+
+    private var light = mutableStateOf("light: N/A")
+
 }

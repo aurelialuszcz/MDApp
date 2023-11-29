@@ -58,7 +58,7 @@ class PastaRecipe : ComponentActivity() {
                             .aspectRatio(16f / 9f),
                         contentScale = ContentScale.FillWidth
                     )
-                    Text("This is the pasta recipe.")
+                    Text("This is the pasta recipe.", color = Color.White)
                 }
             }
         }

@@ -58,7 +58,7 @@ class HummusRecipe : ComponentActivity() {
                             .aspectRatio(16f / 9f),
                         contentScale = ContentScale.FillWidth
                     )
-                    Text("This is the hummus recipe.")
+                    Text("This is the hummus recipe.", color = Color.White)
                 }
             }
         }
