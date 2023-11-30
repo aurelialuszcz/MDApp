@@ -1,14 +1,15 @@
 package com.example.assignmentmain
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -26,6 +27,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
@@ -34,15 +36,22 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.assignmentmain.RecipeWindow
 
 class ExistingRecipes : ComponentActivity() {
     @OptIn(ExperimentalLayoutApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Surface (
+            val burgerImg = painterResource(id = R.drawable.burger)
+            val pizzaImg = painterResource(id = R.drawable.pizza)
+            val pastaImg = painterResource(id = R.drawable.pasta)
+            val hummusImg = painterResource(id = R.drawable.hummus)
+            val backgroundImg = painterResource(id = R.drawable.background)
+
+            Surface(
                 modifier = Modifier.fillMaxWidth()
-            ){
+            ) {
                 /*Image(painter = painterResource(id = R.drawable.background),
                     contentDescription = "background",
                     contentScale = ContentScale.FillHeight,
@@ -52,15 +61,14 @@ class ExistingRecipes : ComponentActivity() {
                     modifier = Modifier.verticalScroll(rememberScrollState())
                 ) {
                     Title()
-                    Burger()
-                    Pizza()
-                    Pasta()
-                    Hummus()
+                    RecipeCard(title = "Burger", image = burgerImg)
+                    RecipeCard(title = "Pizza", image = pizzaImg)
+                    RecipeCard(title = "Pasta", image = pastaImg)
+                    RecipeCard(title = "Hummus", image = hummusImg)
                 }
             }
         }
     }
-    //}
 
     // Function to create title of the page
     @Composable
@@ -76,11 +84,8 @@ class ExistingRecipes : ComponentActivity() {
         )
     }
 
-    // Burger card
-    @Preview
     @Composable
-    fun Burger() {
-        val burgerImg = painterResource(id = R.drawable.burger)
+    fun RecipeCard(title: String, image: Painter) {
         Card(elevation = CardDefaults.cardElevation(
             defaultElevation = 6.dp
         ),
@@ -91,10 +96,15 @@ class ExistingRecipes : ComponentActivity() {
                 .wrapContentSize(Alignment.Center),
             content = {
                 // Recipe title
-                Text("Burger", fontSize = 16.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+                Text(
+                    title,
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center
+                )
                 // Recipe image
                 Image(
-                    painter = burgerImg,
+                    painter = image,
                     contentDescription = null,
                     modifier = Modifier
                         .size(150.dp)
@@ -102,107 +112,16 @@ class ExistingRecipes : ComponentActivity() {
                         .aspectRatio(16f / 9f),
                     contentScale = ContentScale.FillWidth
                 )
-                Button(onClick = { startActivity(burgerRecipe()) }) {
+                Button(onClick = { /*startActivity(burgerRecipe())*/ }) {
                     Text("See more")
                 }
+
             }
         )
     }
+}
 
-
-    // Pizza card
-    @Preview
-    @Composable
-    fun Pizza() {
-        val pizzaImg = painterResource(id = R.drawable.pizza)
-        Card(elevation = CardDefaults.cardElevation(
-            defaultElevation = 6.dp
-        ),modifier = Modifier
-            .width(250.dp)
-            .height(250.dp)
-            .padding(5.dp)
-            .wrapContentSize(Alignment.Center),
-            content = {
-                // Recipe title
-                Text("Pizza", fontSize = 16.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
-                // Recipe image
-                Image(
-                    painter = pizzaImg,
-                    contentDescription = null,
-                    modifier = Modifier
-                        .size(150.dp)
-                        //.clip(CircleShape),
-                        .aspectRatio(16f / 9f),
-                    contentScale = ContentScale.FillWidth
-                )
-                Button(onClick = { startActivity(pizzaRecipe()) }) {
-                    Text("See more")
-                }
-            })
-    }
-
-    // Pasta card
-    @Preview
-    @Composable
-    fun Pasta() {
-        val pastaImg = painterResource(id = R.drawable.pasta)
-        Card(elevation = CardDefaults.cardElevation(
-            defaultElevation = 6.dp
-        ),modifier = Modifier
-            .width(250.dp)
-            .height(250.dp)
-            .padding(5.dp)
-            .wrapContentSize(Alignment.Center),
-            content = {
-                // Recipe title
-                Text("Pasta", fontSize = 16.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
-                // Recipe image
-                Image(
-                    painter = pastaImg,
-                    contentDescription = null,
-                    modifier = Modifier
-                        .size(150.dp)
-                        //.clip(CircleShape)
-                        .aspectRatio(16f / 9f),
-                    contentScale = ContentScale.FillWidth
-                )
-                Button(onClick = { startActivity(pastaRecipe()) }) {
-                    Text("See more")
-                }
-            })
-    }
-
-    // Hummus card
-    @Preview
-    @Composable
-    fun Hummus() {
-        val hummusImg = painterResource(id = R.drawable.hummus)
-        Card(elevation = CardDefaults.cardElevation(
-            defaultElevation = 6.dp
-        ),modifier = Modifier
-            .width(250.dp)
-            .height(250.dp)
-            .padding(5.dp)
-            .wrapContentSize(Alignment.Center),
-            content = {
-                // Recipe title
-                Text("Beetroot hummus", fontSize = 16.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
-                // Recipe image
-                Image(
-                    painter = hummusImg,
-                    contentDescription = null,
-                    modifier = Modifier
-                        .size(150.dp)
-                        .aspectRatio(16f / 9f),
-                    //clip(CircleShape),
-                    contentScale = ContentScale.FillWidth
-                )
-                Button(onClick = { startActivity(hummusRecipe()) }) {
-                    Text("See more")
-                }
-            })
-    }
-
+/*
     private fun burgerRecipe(): Intent {
         val intent = Intent(this, BurgerRecipe::class.java)
 
@@ -225,5 +144,4 @@ class ExistingRecipes : ComponentActivity() {
         val intent = Intent(this, HummusRecipe::class.java)
 
         return intent
-    }
-}
+    }*/
