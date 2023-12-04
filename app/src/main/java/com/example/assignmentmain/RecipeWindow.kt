@@ -21,14 +21,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-    class RecipeWindow(
+class RecipeWindow(
         private val title: String,
         private val image: Painter,
         private val background: Painter,
         private val description: String
     ) {
         @Composable
-        fun createRecipeCard() {
+        fun createRecipeWindow() {
             Surface(modifier = Modifier.fillMaxSize()) {
                 Image(
                     painter = background,

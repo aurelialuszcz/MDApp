@@ -1,16 +1,15 @@
 package com.example.assignmentmain
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -21,6 +20,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -33,13 +33,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.assignmentmain.RecipeWindow
 
+@ExperimentalMaterial3Api
 class ExistingRecipes : ComponentActivity() {
-    @OptIn(ExperimentalLayoutApi::class)
+      @OptIn(ExperimentalLayoutApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -48,14 +47,14 @@ class ExistingRecipes : ComponentActivity() {
             val pastaImg = painterResource(id = R.drawable.pasta)
             val hummusImg = painterResource(id = R.drawable.hummus)
             val backgroundImg = painterResource(id = R.drawable.background)
-
             Surface(
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxSize()
             ) {
-                /*Image(painter = painterResource(id = R.drawable.background),
+                Image(
+                    painter = backgroundImg,
                     contentDescription = "background",
                     contentScale = ContentScale.FillHeight,
-                )*/
+                )
                 FlowRow(
                     horizontalArrangement = Arrangement.SpaceBetween,
                     modifier = Modifier.verticalScroll(rememberScrollState())
@@ -66,6 +65,7 @@ class ExistingRecipes : ComponentActivity() {
                     RecipeCard(title = "Pasta", image = pastaImg)
                     RecipeCard(title = "Hummus", image = hummusImg)
                 }
+
             }
         }
     }
@@ -75,7 +75,7 @@ class ExistingRecipes : ComponentActivity() {
     fun Title() {
         Text(
             "Recipes",
-            color = Color.DarkGray,
+            color = Color.White,
             fontFamily = FontFamily.Serif,
             fontSize = 36.sp,
             fontWeight = FontWeight.Bold,
@@ -112,36 +112,15 @@ class ExistingRecipes : ComponentActivity() {
                         .aspectRatio(16f / 9f),
                     contentScale = ContentScale.FillWidth
                 )
-                Button(onClick = { /*startActivity(burgerRecipe())*/ }) {
+                Button(onClick = { startActivity(RecipeDescr()) }) {
                     Text("See more")
                 }
-
             }
         )
     }
+
+    private fun RecipeDescr(): Intent {
+    val intent = Intent(this, RecipeWindow::class.java)
+        return intent
+    }
 }
-
-/*
-    private fun burgerRecipe(): Intent {
-        val intent = Intent(this, BurgerRecipe::class.java)
-
-        return intent
-    }
-
-    private fun pizzaRecipe() : Intent {
-    val intent = Intent(this, PizzaRecipe::class.java)
-
-    return intent
-    }
-
-    private fun pastaRecipe() : Intent {
-        val intent = Intent(this, PastaRecipe::class.java)
-
-        return intent
-    }
-
-    private fun hummusRecipe() : Intent {
-        val intent = Intent(this, HummusRecipe::class.java)
-
-        return intent
-    }*/
