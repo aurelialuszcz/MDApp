@@ -27,7 +27,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
@@ -42,10 +41,6 @@ class ExistingRecipes : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            val burgerImg = painterResource(id = R.drawable.burger)
-            val pizzaImg = painterResource(id = R.drawable.pizza)
-            val pastaImg = painterResource(id = R.drawable.pasta)
-            val hummusImg = painterResource(id = R.drawable.hummus)
             val backgroundImg = painterResource(id = R.drawable.background)
             Surface(
                 modifier = Modifier.fillMaxSize()
@@ -60,10 +55,10 @@ class ExistingRecipes : ComponentActivity() {
                     modifier = Modifier.verticalScroll(rememberScrollState())
                 ) {
                     Title()
-                    RecipeCard(title = "Burger", image = burgerImg)
-                    RecipeCard(title = "Pizza", image = pizzaImg)
-                    RecipeCard(title = "Pasta", image = pastaImg)
-                    RecipeCard(title = "Hummus", image = hummusImg)
+                    Burger()
+                    //Burger()
+                    //Burger()
+                    //Burger()
                 }
 
             }
@@ -85,7 +80,8 @@ class ExistingRecipes : ComponentActivity() {
     }
 
     @Composable
-    fun RecipeCard(title: String, image: Painter) {
+    fun Burger() {
+        val burgerImg = painterResource(id = R.drawable.burger)
         Card(elevation = CardDefaults.cardElevation(
             defaultElevation = 6.dp
         ),
@@ -97,14 +93,14 @@ class ExistingRecipes : ComponentActivity() {
             content = {
                 // Recipe title
                 Text(
-                    title,
+                    "Burger",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.Center
                 )
                 // Recipe image
                 Image(
-                    painter = image,
+                    painter = burgerImg,
                     contentDescription = null,
                     modifier = Modifier
                         .size(150.dp)
@@ -112,15 +108,16 @@ class ExistingRecipes : ComponentActivity() {
                         .aspectRatio(16f / 9f),
                     contentScale = ContentScale.FillWidth
                 )
-                Button(onClick = { startActivity(RecipeDescr()) }) {
+                Button(onClick = { startActivity(burgerRecipe()) }) {
                     Text("See more")
                 }
             }
         )
     }
 
-    private fun RecipeDescr(): Intent {
-    val intent = Intent(this, RecipeWindow::class.java)
+    private fun burgerRecipe(): Intent {
+        val intent = Intent(this, RecipeWindow::class.java)
+
         return intent
     }
 }

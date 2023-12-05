@@ -1,12 +1,17 @@
 package com.example.assignmentmain
 
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -15,20 +20,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-class RecipeWindow(
-        private val title: String,
-        private val image: Painter,
-        private val background: Painter,
-        private val description: String
-    ) {
-        @Composable
-        fun createRecipeWindow() {
+@ExperimentalMaterial3Api
+class RecipeWindow : ComponentActivity () {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            val burger = painterResource(id = R.drawable.burger)
+            val background = painterResource(id = R.drawable.background)
             Surface(modifier = Modifier.fillMaxSize()) {
                 Image(
                     painter = background,
@@ -36,13 +42,15 @@ class RecipeWindow(
                     contentScale = ContentScale.FillHeight,
                 )
                 Column(
-                    modifier = Modifier.fillMaxSize().padding(16.dp),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(16.dp),
                     verticalArrangement = Arrangement.Top,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     // Welcome title
                     Text(
-                        title,
+                        "Burger",
                         color = Color.White,
                         fontFamily = FontFamily.Serif,
                         fontSize = 36.sp,
@@ -51,15 +59,16 @@ class RecipeWindow(
                         modifier = Modifier.padding(vertical = 16.dp)
                     )
                     Image(
-                        painter = image,
+                        painter = burger,
                         contentDescription = null,
                         modifier = Modifier
                             .size(150.dp)
                             .aspectRatio(16f / 9f),
                         contentScale = ContentScale.FillWidth
                     )
-                    Text(description, color = Color.White)
+                    Text("Burger recipe goes here", color = Color.White)
                 }
             }
         }
     }
+}
