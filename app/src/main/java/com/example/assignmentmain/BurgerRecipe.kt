@@ -55,6 +55,7 @@ class BurgerRecipe : ComponentActivity() {
                     contentDescription = "background",
                     contentScale = ContentScale.FillHeight,
                 )
+
                 Parallax()
             }/*
                 Column(
