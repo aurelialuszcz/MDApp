@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.aspectRatio
@@ -50,15 +51,15 @@ class ExistingRecipes : ComponentActivity() {
                     contentDescription = "background",
                     contentScale = ContentScale.FillHeight,
                 )
-                FlowRow(
-                    horizontalArrangement = Arrangement.SpaceBetween,
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier.verticalScroll(rememberScrollState())
                 ) {
                     Title()
                     Burger()
-                    //Burger()
-                    //Burger()
-                    //Burger()
+                    Burger()
+                    Burger()
+                    Burger()
                 }
 
             }
@@ -116,7 +117,7 @@ class ExistingRecipes : ComponentActivity() {
     }
 
     private fun burgerRecipe(): Intent {
-        val intent = Intent(this, RecipeWindow::class.java)
+        val intent = Intent(this, BurgerRecipe::class.java)
 
         return intent
     }
