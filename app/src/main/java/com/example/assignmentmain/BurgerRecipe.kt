@@ -40,6 +40,7 @@ class BurgerRecipe : ComponentActivity() {
             val burger = painterResource(id = R.drawable.burger)
             val background = painterResource(id = R.drawable.background)
             Surface(modifier = Modifier.fillMaxSize()) {
+                // Background
                 Image(
                     painter = background,
                     contentDescription = "background",
@@ -52,7 +53,8 @@ class BurgerRecipe : ComponentActivity() {
                     verticalArrangement = Arrangement.Top,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    // Welcome title
+
+                    // Recipe title
                     Text(
                         "Burger",
                         color = Color.White,
@@ -62,6 +64,7 @@ class BurgerRecipe : ComponentActivity() {
                         textAlign = TextAlign.Center,
                         modifier = Modifier.padding(vertical = 16.dp)
                     )
+                    // Recipe image
                     Image(
                         painter = burger,
                         contentDescription = null,
@@ -70,6 +73,7 @@ class BurgerRecipe : ComponentActivity() {
                             .aspectRatio(16f / 9f),
                         contentScale = ContentScale.FillWidth
                     )
+                    // Recipe text
                     Text("Burger recipe goes here", color = Color.White)
                 }
             }

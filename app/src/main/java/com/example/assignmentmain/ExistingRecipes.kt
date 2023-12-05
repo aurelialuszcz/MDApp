@@ -55,7 +55,9 @@ class ExistingRecipes : ComponentActivity() {
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier.verticalScroll(rememberScrollState())
                 ) {
+                    // calling title composable
                     Title()
+                    // calling burger composables to test layout
                     Burger()
                     Burger()
                     Burger()
@@ -80,6 +82,7 @@ class ExistingRecipes : ComponentActivity() {
         )
     }
 
+    // Function to create burger card
     @Composable
     fun Burger() {
         val burgerImg = painterResource(id = R.drawable.burger)
@@ -116,6 +119,7 @@ class ExistingRecipes : ComponentActivity() {
         )
     }
 
+    // Intent to access burger recipe
     private fun burgerRecipe(): Intent {
         val intent = Intent(this, BurgerRecipe::class.java)
 
