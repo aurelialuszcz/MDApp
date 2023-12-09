@@ -16,6 +16,11 @@
         android:supportsRtl="true"
         tools:targetApi="31">
         <activity
+            android:name=".DBOpenHelper"
+            android:exported="false"
+            android:label="@string/title_activity_dbopen_helper"
+            android:theme="@style/Theme.AssignmentMain" />
+        <activity
             android:name=".BurgerRecipe"
             android:exported="false"
             android:label="@string/title_activity_burger_recipe"

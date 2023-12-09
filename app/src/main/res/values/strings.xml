@@ -7,4 +7,5 @@
     <string name="title_activity_pizza_recipe">PizzaRecipe</string>
     <string name="title_activity_pasta_recipe">PastaRecipe</string>
     <string name="title_activity_hummus_recipe">HummusRecipe</string>
+    <string name="title_activity_dbopen_helper">DBOpenHelper</string>
 </resources>
