@@ -57,38 +57,7 @@ class BurgerRecipe : ComponentActivity() {
                 )
 
                 Parallax()
-            }/*
-                Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(16.dp),
-                    verticalArrangement = Arrangement.Top,
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-
-                    // Recipe title
-                    Text(
-                        "Burger",
-                        color = Color.White,
-                        fontFamily = FontFamily.Serif,
-                        fontSize = 36.sp,
-                        fontWeight = FontWeight.Bold,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier.padding(vertical = 16.dp)
-                    )
-                    // Recipe image
-                    Image(
-                        painter = burger,
-                        contentDescription = null,
-                        modifier = Modifier
-                            .size(150.dp)
-                            .aspectRatio(16f / 9f),
-                        contentScale = ContentScale.FillWidth
-                    )
-                    // Recipe text
-                    Text("Burger recipe goes here", color = Color.White)
-                }
-            }*/
+            }
         }
     }
 }
@@ -119,22 +88,48 @@ fun Parallax() {
                 )
             }
             Text("Beef burger",
-                modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp), color = Color.White)
+                modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp), color = Color.White, fontSize = 32.sp)
+            Text("Ingredients",
+                modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp), color = Color.White, fontSize = 18.sp)
+            Text("1 small onion, diced\n" +
+                    "500g good-quality beef mince\n" +
+                    "1 egg\n" +
+                    "1 tbsp vegetable oil\n" +
+                    "4 burger buns",
+                modifier = Modifier.padding(2.dp), color = Color.White)
+            Text("Steps",
+                modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp), color = Color.White, fontSize = 18.sp)
+            Text("STEP 1\n" +
+                    "Tip 500g beef mince into a bowl with 1 small diced onion and 1 egg, then mix.\n" +
+                    "\n" +
+                    "STEP 2\n" +
+                    "Divide the mixture into four. Lightly wet your hands. Carefully roll the mixture into balls, each about the size of a tennis ball.\n" +
+                    "\n" +
+                    "STEP 3\n" +
+                    "Set in the palm of your hand and gently squeeze down to flatten into patties about 3cm thick. Make sure all the burgers are the same thickness so that they will cook evenly.\n" +
+                    "\n" +
+                    "STEP 4\n" +
+                    "Put on a plate, cover with cling film and leave in the fridge to firm up for at least 30 mins.\n" +
+                    "\n" +
+                    "STEP 5\n" +
+                    "Heat the barbecue to medium hot (there will be white ash over the red hot coals – about 40 mins after lighting). Lightly brush one side of each burger with vegetable oil.\n" +
+                    "\n" +
+                    "STEP 6\n" +
+                    "Place the burgers, oil-side down, on the barbecue. Cook for 5 mins until the meat is lightly charred. Don’t move them around or they may stick.\n" +
+                    "\n" +
+                    "STEP 7\n" +
+                    "Oil the other side, then turn over using tongs. Don’t press down on the meat, as that will squeeze out the juices.\n" +
+                    "\n" +
+                    "STEP 8\n" +
+                    "Cook for 5 mins more for medium. If you like your burgers pink in the middle, cook 1 min less each side. For well done, cook 1 min more.\n" +
+                    "\n" +
+                    "STEP 9\n" +
+                    "Take the burgers off the barbecue. Leave to rest on a plate so that all the juices can settle inside.\n" +
+                    "\n" +
+                    "STEP 10\n" +
+                    "Slice four burger buns in half. Place, cut-side down, on the barbecue rack and toast for 1 min until they are lightly charred. Place a burger inside each bun, then top with your choice of accompaniment.",
+                modifier = Modifier.padding(2.dp), color = Color.White)
 
-            Text("Beef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipe" +
-                    "Beef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipe" +
-                    "Beef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipe" +
-                    "Beef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipe" +
-                    "Beef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipe" +
-                    "Beef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipe" +
-                    "Beef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipe" +
-                    "Beef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipe" +
-                    "Beef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipe" +
-                    "Beef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipe" +
-                "Beef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipe" + "Beef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipe"
-                +"Beef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipe"+"Beef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipe"+
-                    "Beef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipe"+"Beef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipeBeef recipe",
-                modifier = Modifier.padding(8.dp), color = Color.White)
 
         }
 

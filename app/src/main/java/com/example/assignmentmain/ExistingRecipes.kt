@@ -59,7 +59,7 @@ class ExistingRecipes : ComponentActivity() {
                     Title()
                     // calling burger composables to test layout
                     Burger()
-                    Burger()
+                    Pizza()
                     Burger()
                     Burger()
                 }
@@ -119,9 +119,51 @@ class ExistingRecipes : ComponentActivity() {
         )
     }
 
+    @Composable
+    fun Pizza() {
+        val pizzaImg = painterResource(id = R.drawable.pizza)
+        Card(elevation = CardDefaults.cardElevation(
+            defaultElevation = 6.dp
+        ),
+            modifier = Modifier
+                .width(250.dp)
+                .height(250.dp)
+                .padding(5.dp)
+                .wrapContentSize(Alignment.Center),
+            content = {
+                // Recipe title
+                Text(
+                    "Homemade pizza",
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center
+                )
+                // Recipe image
+                Image(
+                    painter = pizzaImg,
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(150.dp)
+                        //.clip(CircleShape),
+                        .aspectRatio(16f / 9f),
+                    contentScale = ContentScale.FillWidth
+                )
+                Button(onClick = { startActivity(pizzaRecipe()) }) {
+                    Text("See more")
+                }
+            }
+        )
+    }
+
     // Intent to access burger recipe
     private fun burgerRecipe(): Intent {
         val intent = Intent(this, BurgerRecipe::class.java)
+
+        return intent
+    }
+
+    private fun pizzaRecipe(): Intent {
+        val intent = Intent(this, PizzaRecipe::class.java)
 
         return intent
     }
