@@ -46,7 +46,6 @@ class BurgerRecipe : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            val burger = painterResource(id = R.drawable.burger)
             val background = painterResource(id = R.drawable.background)
             Surface(modifier = Modifier.fillMaxSize()) {
                 // Background

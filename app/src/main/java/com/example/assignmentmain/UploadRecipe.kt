@@ -51,6 +51,7 @@ class UploadRecipe : ComponentActivity() {
                 uri.value = it
                 has_image.value = true
             }
+            Text(current_data.value)
             Box(modifier = Modifier.fillMaxSize()) {
                 /*Image(painter = painterResource(id = R.drawable.background),
                     contentDescription = "background",
@@ -70,7 +71,6 @@ class UploadRecipe : ComponentActivity() {
                         fontWeight = FontWeight.Bold,
                         textAlign = TextAlign.Center,
                         modifier = Modifier.padding(vertical = 16.dp))
-                    Text(current_data.value)
                 }
 
                 // Uploading image + text

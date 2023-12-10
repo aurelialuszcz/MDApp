@@ -16,6 +16,11 @@
         android:supportsRtl="true"
         tools:targetApi="31">
         <activity
+            android:name=".PastaRecipe"
+            android:exported="false"
+            android:label="@string/title_activity_pasta_recipe"
+            android:theme="@style/Theme.AssignmentMain" />
+        <activity
             android:name=".DBOpenHelper"
             android:exported="false"
             android:label="@string/title_activity_dbopen_helper"
@@ -29,11 +34,6 @@
             android:name=".HummusRecipe"
             android:exported="false"
             android:label="@string/title_activity_hummus_recipe"
-            android:theme="@style/Theme.AssignmentMain" />
-        <activity
-            android:name=".PastaRecipe"
-            android:exported="false"
-            android:label="@string/title_activity_pasta_recipe"
             android:theme="@style/Theme.AssignmentMain" />
         <activity
             android:name=".PizzaRecipe"

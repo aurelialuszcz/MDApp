@@ -32,7 +32,6 @@ class PizzaRecipe : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            val burger = painterResource(id = R.drawable.burger)
             val background = painterResource(id = R.drawable.background)
             Surface(modifier = Modifier.fillMaxSize()) {
                 // Background
@@ -93,7 +92,8 @@ private fun ParallaxPizza() {
                     "Step 4: Preheat oven to 475°F (246°C). Allow it to heat for at least 15-20 minutes as you shape the pizza. (If using a pizza stone, place it in the oven to preheat as well.) Lightly grease baking sheet or pizza pan with nonstick spray or olive oil. Sprinkle lightly with cornmeal, which gives the crust extra crunch and flavor.\n" + "\n" +
                     "Step 5: Shape the dough: When the dough is ready, punch it down to release any air bubbles. Divide the dough in half. (If not making 2 pizzas, freeze half of the dough for another time. See freezing instructions below.) On a lightly floured work surface using lightly floured hands or rolling pin, gently flatten the dough into a disc. Place on prepared pan and, using lightly floured hands, stretch and flatten the disc into a 12-inch circle, about 1/2-inch thick. If the dough keeps shrinking back as you try to stretch it, stop what you’re doing, cover it lightly for 5-10 minutes, then try again. Once shaped into a 12-inch circle, lift the edge of the dough up to create a lip around the edges. I simply pinch the edges up to create the rim. If using a pizza stone, place the dough directly on baker’s peels dusted with cornmeal.\n" + "\n" +
                     "Step 6: Cover dough lightly with plastic wrap or a clean kitchen towel and allow to rest for a few minutes as you prepare your pizza toppings. I suggest pepperoni & green peppers or jalapeño slices, extra cheese pizza, Hawaiian pizza, pesto pizza, spinach artichoke white pizza, or homemade BBQ chicken pizza.\n" + "\n" +
-                    "Step 7: Top & bake the pizza: Using your fingers, push dents into the surface of the dough to prevent bubbling. To prevent the filling from making your pizza crust soggy, brush the top lightly with olive oil. Top with your favorite toppings and bake for 13-15 minutes or until the crust is golden brown.",modifier = Modifier.padding(2.dp), color = Color.White)
+                    "Step 7: Top & bake the pizza: Using your fingers, push dents into the surface of the dough to prevent bubbling. To prevent the filling from making your pizza crust soggy, brush the top lightly with olive oil. Top with your favorite toppings and bake for 13-15 minutes or until the crust is golden brown.",
+                modifier = Modifier.padding(2.dp), color = Color.White)
 
         }
 
