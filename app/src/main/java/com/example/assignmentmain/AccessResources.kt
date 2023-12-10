@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -70,7 +71,11 @@ class AccessResources : ComponentActivity() {
                                     e.printStackTrace()
                                 }
                             }
-                            , modifier = Modifier.padding(5.dp))
+                            , modifier = Modifier.padding(5.dp),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.DarkGray,
+                                    contentColor = Color.White
+                                ))
                             {
                                 Text("Go to Youtube")
                             }
@@ -92,7 +97,11 @@ class AccessResources : ComponentActivity() {
                                     e.printStackTrace()
                                 }
                             }
-                                , modifier = Modifier.padding(5.dp)) {
+                                , modifier = Modifier.padding(5.dp)
+                                ,colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.DarkGray,
+                                    contentColor = Color.White
+                                )) {
                                 Text("Go to Google")
                             }
                         }

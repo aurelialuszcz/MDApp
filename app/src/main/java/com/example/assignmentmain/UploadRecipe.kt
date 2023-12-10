@@ -24,6 +24,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Surface
@@ -106,16 +107,21 @@ class UploadRecipe : ComponentActivity() {
                         Button(
                             onClick = { launcher.launch("image/*") },
                             modifier = Modifier
-                                .padding(8.dp)
-                        ) {
+                                .padding(8.dp),
+                                colors = ButtonDefaults.buttonColors(
+                                containerColor = Color.DarkGray,
+                                contentColor = Color.White
+                            )) {
                             Text("Upload", color = Color.White)
                         }
                         // Text upload button
                         Button(
                             onClick = { enterRecipe() },
-                            modifier = Modifier
-                                .padding(8.dp)
-                        ) {
+                            modifier = Modifier.padding(8.dp)
+                            ,colors = ButtonDefaults.buttonColors(
+                                containerColor = Color.DarkGray,
+                                contentColor = Color.White
+                        )) {
                             Text("Submit", color = Color.White)
                         }
                         Card(//elevation = CardDefaults.cardElevation(

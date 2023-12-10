@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -76,17 +77,29 @@ class MainActivity : ComponentActivity() {
                 {
                     Row {
                         // First activity button
-                        Button(onClick = { startActivity(createIntentRecipesWindow()) }) {
+                        Button(onClick = { startActivity(createIntentRecipesWindow()) }
+                        ,colors = ButtonDefaults.buttonColors(
+                            containerColor = Color.DarkGray,
+                            contentColor = Color.White
+                        )) {
                             Text("BROWSE")
                         }
                         Text(" ")
                         // Second activity button
-                        Button(onClick = { startActivity(createIntentUploadWindow()) }) {
+                        Button(onClick = { startActivity(createIntentUploadWindow()) }
+                            ,colors = ButtonDefaults.buttonColors(
+                            containerColor = Color.DarkGray,
+                            contentColor = Color.White
+                        )) {
                             Text("UPLOAD")
                         }
                         Text(" ")
                         // Third activity button
-                        Button(onClick = { startActivity(createIntentAccessYtWindow()) }) {
+                        Button(onClick = { startActivity(createIntentAccessYtWindow()) }
+                            ,colors = ButtonDefaults.buttonColors(
+                            containerColor = Color.DarkGray,
+                            contentColor = Color.White
+                        )) {
                             Text("SEARCH")
                         }
                     }
@@ -129,8 +142,11 @@ class MainActivity : ComponentActivity() {
             else {
                 activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
             }
-        }) {
-            Text("Toggle Orientation")
+        } ,colors = ButtonDefaults.buttonColors(
+            containerColor = Color.DarkGray,
+            contentColor = Color.White
+        )) {
+            Text("Orientation")
         }
 
     }
