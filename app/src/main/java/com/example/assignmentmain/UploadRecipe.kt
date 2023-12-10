@@ -173,10 +173,6 @@ class UploadRecipe : ComponentActivity() {
 
         db.insert(DBOpenHelper.TABLE_NAME, null, values)
 
-        // Optionally, you can clear the entered text and image after saving to the database
-        recipe_text.value = "Enter your recipe here!"
-        uri.value = null
-        has_image.value = false
     }
 
     // Close the database when the activity is destroyed
