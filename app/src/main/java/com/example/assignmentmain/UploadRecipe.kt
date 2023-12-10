@@ -2,7 +2,6 @@ package com.example.assignmentmain
 
 import android.annotation.SuppressLint
 import android.content.ContentValues
-import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.graphics.ImageDecoder
 import android.net.Uri
@@ -45,10 +44,18 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 class UploadRecipe : ComponentActivity() {
+
+    // Database variables
+    private lateinit var dbHelper: DBOpenHelper
+    private lateinit var db: SQLiteDatabase
+
     @SuppressLint("SuspiciousIndentation")
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Setting up database for this class
+        dbHelper = DBOpenHelper(this)
+        db = dbHelper.writableDatabase
         setContent {
             val launcher = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) {
                 uri.value = it
@@ -138,21 +145,44 @@ class UploadRecipe : ComponentActivity() {
                 }
             }
         }
-        }
+    }
 
 
     // Function to access image folder
     private fun getImageBitmap(image_uri: Uri?): ImageBitmap {
-        if(Build.VERSION.SDK_INT >= 28) {
+        if (Build.VERSION.SDK_INT >= 28) {
             val source = ImageDecoder.createSource(contentResolver, image_uri!!)
             return ImageDecoder.decodeBitmap(source).asImageBitmap()
         } else {
             return MediaStore.Images.Media.getBitmap(contentResolver, image_uri!!).asImageBitmap()
         }
     }
+
     // Function to show the entered text to the screen
     fun enterRecipe() {
         entered_text.value = recipe_text.value
+
+        val recipeText = entered_text.value
+        val imageUri = uri.value.toString()
+
+        // Save to the database
+        val values = ContentValues().apply {
+            put(DBOpenHelper.COLUMN_RECIPE_TEXT, recipeText)
+            put(DBOpenHelper.COLUMN_IMAGE_URI, imageUri)
+        }
+
+        db.insert(DBOpenHelper.TABLE_NAME, null, values)
+
+        // Optionally, you can clear the entered text and image after saving to the database
+        recipe_text.value = "Enter your recipe here!"
+        uri.value = null
+        has_image.value = false
+    }
+
+    // Close the database when the activity is destroyed
+    override fun onDestroy() {
+        super.onDestroy()
+        db.close()
     }
 
     var has_image = mutableStateOf(false)
