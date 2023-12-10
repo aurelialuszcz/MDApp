@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -33,6 +34,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -94,6 +96,16 @@ class ExistingRecipes : ComponentActivity() {
                 .padding(5.dp)
                 .wrapContentSize(Alignment.Center),
             content = {
+                    // Recipe image
+                    Image(
+                        painter = burgerImg,
+                        contentDescription = null,
+                        modifier = Modifier
+                            .size(150.dp)
+                            //.clip(CircleShape),
+                            .aspectRatio(16f / 9f),
+                        contentScale = ContentScale.FillWidth
+                    )
                 // Recipe title
                 Text(
                     "Burger",
@@ -101,19 +113,10 @@ class ExistingRecipes : ComponentActivity() {
                     fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.Center
                 )
-                // Recipe image
-                Image(
-                    painter = burgerImg,
-                    contentDescription = null,
-                    modifier = Modifier
-                        .size(150.dp)
-                        //.clip(CircleShape),
-                        .aspectRatio(16f / 9f),
-                    contentScale = ContentScale.FillWidth
-                )
-                Button(onClick = { startActivity(burgerRecipe()) }) {
-                    Text("See more")
-                }
+                    Button(onClick = { startActivity(burgerRecipe()) }) {
+                        Text("See more")
+                    }
+
             }
         )
     }
