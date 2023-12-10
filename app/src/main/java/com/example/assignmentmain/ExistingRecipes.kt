@@ -38,7 +38,6 @@ import androidx.compose.ui.unit.sp
 
 @ExperimentalMaterial3Api
 class ExistingRecipes : ComponentActivity() {
-      @OptIn(ExperimentalLayoutApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -57,10 +56,11 @@ class ExistingRecipes : ComponentActivity() {
                 ) {
                     // calling title composable
                     Title()
-                    // calling burger composables to test layout
+                    // calling card composable functions
                     Burger()
                     Pizza()
                     Pasta()
+                    Hummus()
                 }
 
             }
@@ -191,6 +191,42 @@ class ExistingRecipes : ComponentActivity() {
             }
         )
     }
+    // Function to create pasta card
+    @Composable
+    fun Hummus() {
+        val hummusImg = painterResource(id = R.drawable.hummus)
+        Card(elevation = CardDefaults.cardElevation(
+            defaultElevation = 6.dp
+        ),
+            modifier = Modifier
+                .width(250.dp)
+                .height(250.dp)
+                .padding(5.dp)
+                .wrapContentSize(Alignment.Center),
+            content = {
+                // Recipe title
+                Text(
+                    "Beetroot hummus",
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center
+                )
+                // Recipe image
+                Image(
+                    painter = hummusImg,
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(150.dp)
+                        //.clip(CircleShape),
+                        .aspectRatio(16f / 9f),
+                    contentScale = ContentScale.FillWidth
+                )
+                Button(onClick = { startActivity(hummusRecipe()) }) {
+                    Text("See more")
+                }
+            }
+        )
+    }
 
     // Intent to access burger recipe
     private fun burgerRecipe(): Intent {
@@ -209,6 +245,13 @@ class ExistingRecipes : ComponentActivity() {
     // Intent to access pasta recipe
     private fun pastaRecipe(): Intent {
         val intent = Intent(this, PastaRecipe::class.java)
+
+        return intent
+    }
+
+    // Intent to access hummus recipe
+    private fun hummusRecipe(): Intent {
+        val intent = Intent(this, HummusRecipe::class.java)
 
         return intent
     }

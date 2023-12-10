@@ -28,7 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlin.math.min
 
-class PastaRecipe : ComponentActivity() {
+class HummusRecipe : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -40,7 +40,7 @@ class PastaRecipe : ComponentActivity() {
                     contentDescription = "background",
                     contentScale = ContentScale.FillHeight,
                 )
-                ParallaxPasta()
+                ParallaxHummus()
             }
         }
     }
@@ -48,7 +48,7 @@ class PastaRecipe : ComponentActivity() {
 
 @Preview
 @Composable
-private fun ParallaxPasta() {
+private fun ParallaxHummus() {
     val scrollState = rememberScrollState()
 
     Box{
@@ -66,33 +66,32 @@ private fun ParallaxPasta() {
                     }, contentAlignment = Alignment.Center
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.pasta),
+                    painter = painterResource(id = R.drawable.hummus),
                     contentDescription = null,
                     modifier = Modifier.fillMaxHeight(),
                     contentScale = ContentScale.Crop
                 )
             }
-            Text("Homemade pasta",
+            Text("Beetroot hummus",
                 modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp), color = Color.White, fontSize = 32.sp)
             Text("Ingredients",
                 modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp), color = Color.White, fontSize = 18.sp)
-            Text("2 cups all-purpose flour, spooned & leveled\n" +
-                    "3 large eggs\n" +
-                    "½ teaspoon sea salt\n" +
-                    "½ tablespoon extra-virgin olive oil",
+            Text("1 can chickpeas (430 g/15 oz), drained and rinsed\n" +
+                    "2 medium cooked beetroots (read above post on how to cook them), cut into quarters\n" +
+                    "2 cloves garlic\n" +
+                    "zest and juice from 1 medium lemon\n" +
+                    "2-3 tablespoons tahini\n" +
+                    "2-3 tablespoons olive oil\n" +
+                    "¼ teaspoon salt\n" +
+                    "½ teaspoon ground cumin",
                 modifier = Modifier.padding(2.dp), color = Color.White)
             Text("Steps",
                 modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp), color = Color.White, fontSize = 18.sp)
-            Text("Step 1: Place the flour on a clean work surface and make a nest. Add the eggs, olive oil, and salt to the center and use a fork to gently break up the eggs, keeping the flour walls intact as best as you can. Use your hands to gently bring the flour inward to incorporate. Continue working the dough with your hands to bring it together into a shaggy ball.\n" + "\n" +
-                    "Step 2: Knead the dough for 8 to 10 minutes. At the beginning, the dough should feel pretty dry, but stick with it! It might not feel like it’s going to come together, but after 8-10 minutes of kneading, it should become cohesive and smooth. If the dough still seems too dry, sprinkle your fingers with a tiny bit of water to incorporate. If it’s too sticky, dust more flour onto your work surface. Shape the dough into a ball, wrap in plastic wrap, and let rest at room temperature for 30 minutes.\n" + "\n" +
-                    "Step 3: Dust 2 large baking sheets with flour and set aside.\n" + "\n" +
-                    "Step 4: Slice the dough into four pieces. Gently flatten one into an oval disk. Run the dough through the Pasta Roller Attachment or a pasta maker three times on level 1 (the widest setting).\n" + "\n" +
-                    "Step 5: Set the dough piece onto a countertop or work surface. Fold both short ends in to meet in the center, then fold the dough in half to form a rectangle (see photo above).\n" + "\n" +
-                    "Step 6: Run the dough through the pasta roller three times on level 2, three times on level 3, and one time each on levels 4, 5, and 6.\n" + "\n" +
-                    "Step 7: Lay half of the pasta sheet onto the floured baking sheet and sprinkle with flour before folding the other half on top. Sprinkle more flour on top of the second half. Every side should be floured so that your final pasta noodles won't stick together.\n" + "\n" +
-                    "Step 8: Repeat with remaining dough.\n" + "\n" +
-                    "Step 9: Run the pasta sheets through the Pasta Cutter Attachment (pictured is the fettuccine cutter). Repeat with remaining dough. Cook the pasta in a pot of salted boiling water for 1 to 2 minutes.",
-            modifier = Modifier.padding(2.dp), color = Color.White)
+            Text("Step 1: Place the beetroots, chickpeas and garlic into a food processor and process for 1 minute until ground. Add all the remaining ingredients and process until creamy. It should have some grainy texture, that’s ok. If it’s dry or you want to thin it out and make it more creamy, add more tahini or water, until you like the consistency.\n" + "\n" +
+                    "Step 2: Adjust seasonings, adding more salt, cumin, olive oil, or lemon juice if needed.\n" + "\n" +
+                    "Step 3: Scrape into a serving bowl to use immediately. I like to serve it at room temperature. Refrigerate in an airtight container if you aren't serving right away.\n" + "\n" +
+                    "Beetroot hummus will keep in the fridge, covered well, for 4-5 days.",
+                modifier = Modifier.padding(2.dp), color = Color.White)
         }
 
         Box (modifier = Modifier
@@ -104,7 +103,7 @@ private fun ParallaxPasta() {
             .background(color = Color.DarkGray),
             contentAlignment = Alignment.Center
         ) {
-            Text(text = "Homemade pasta")
+            Text(text = "Beetroot hummus")
         }
     }
 }
