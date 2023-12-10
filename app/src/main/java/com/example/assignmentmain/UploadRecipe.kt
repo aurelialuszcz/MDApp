@@ -51,7 +51,6 @@ class UploadRecipe : ComponentActivity() {
                 uri.value = it
                 has_image.value = true
             }
-            Text(current_data.value)
             Box(modifier = Modifier.fillMaxSize()) {
                 /*Image(painter = painterResource(id = R.drawable.background),
                     contentDescription = "background",
@@ -123,8 +122,6 @@ class UploadRecipe : ComponentActivity() {
                 }
                 }
             }
-        tdb = DBOpenHelper(this, "test.db", null, 1)
-        sdb = tdb.writableDatabase
         }
 
 
@@ -142,77 +139,8 @@ class UploadRecipe : ComponentActivity() {
         entered_text.value = recipe_text.value
     }
 
-    // Database functions
-
-    override fun onResume() {
-        super.onResume()
-        current_data.value = retrieveData()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        addData()
-        updateData()
-    }
-
-    private fun addData() {
-        val row1: ContentValues = ContentValues().apply {
-            put("FIRST_NAME", "John")
-            put("LAST_NAME", "Doe")
-            put("RECIPE", "Burger")
-        }
-
-        val row2: ContentValues = ContentValues().apply {
-            put("FIRST_NAME", "Jane")
-            put("LAST_NAME", "Doe")
-            put("RECIPE", "Pasta")
-        }
-
-        sdb.insert("Test1", null, row1)
-        sdb.insert("Test2", null, row2)
-    }
-
-    private fun updateData() {
-        val row: ContentValues = ContentValues().apply {
-            put("FIRST_NAME", "Alex")
-        }
-
-        var table: String = "test"
-        var where: String = "FIRST_NAME = ?"
-        var where_args: Array<String> = arrayOf("Jim")
-        sdb.update(table, row, where, where_args)
-    }
-
-    private fun retrieveData(): String {
-        val table_name: String = "test"
-        val column: Array<String> = arrayOf("ID", "FIRST_NAME", "LAST_NAME", "RECIPE")
-        val where: String? = null
-        val whereargs: Array<String>? = null
-        val group_by: String? = null
-        val having: String? = null
-        val order_by: String? = null
-        var c: Cursor = sdb.query(table_name, column, where, whereargs, group_by, having, order_by)
-        var sb: StringBuilder = java.lang.StringBuilder()
-        c.moveToFirst()
-        for (i in 0 until c.count) {
-            sb.append(c.getInt(0).toString())
-            sb.append(" ")
-            sb.append(c.getString(1).toString())
-            sb.append(" ")
-            sb.append(c.getString(2).toString())
-            sb.append(" ")
-            sb.append(c.getString(3).toString())
-            sb.append(" ")
-            c.moveToNext()
-        }
-        return sb.toString()
-    }
-
     var has_image = mutableStateOf(false)
     var uri = mutableStateOf<Uri?>(null)
     var recipe_text = mutableStateOf("Enter your recipe here!")
     var entered_text = mutableStateOf(" ")
-    private var current_data = mutableStateOf("No data present")
-    private lateinit var tdb: DBOpenHelper
-    private lateinit var sdb: SQLiteDatabase
 }

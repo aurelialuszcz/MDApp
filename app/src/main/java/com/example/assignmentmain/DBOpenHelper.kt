@@ -4,8 +4,8 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-class DBOpenHelper(context: Context, name: String, factory: SQLiteDatabase.CursorFactory?, version: Int)
-    : SQLiteOpenHelper(context, name, factory, version)
+class DBOpenHelper(context: Context)
+    : SQLiteOpenHelper(context, "test.db", null, 1)
 {
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL(CREATE_TABLE)

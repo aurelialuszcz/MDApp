@@ -39,6 +39,7 @@ import androidx.compose.ui.unit.sp
 
 @ExperimentalMaterial3Api
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
