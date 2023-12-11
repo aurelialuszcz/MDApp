@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -66,7 +67,6 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier.padding(vertical = 16.dp)
                     )
                 }
-
                 // Column to arrange buttons
                 Column (
                     modifier = Modifier
@@ -161,7 +161,7 @@ class MainActivity : ComponentActivity() {
 
     private var light_listener: SensorEventListener = object : SensorEventListener {
         override fun onSensorChanged(event: SensorEvent?) {
-            light.value = "light: ${event!!.values[0]} lux"
+            light.value = "light: ${event!!.values[0]}"
         }
 
         override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
