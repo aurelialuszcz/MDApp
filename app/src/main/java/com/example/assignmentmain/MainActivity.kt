@@ -75,34 +75,34 @@ class MainActivity : ComponentActivity() {
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally)
                 {
-                    Row {
+
                         // First activity button
                         Button(onClick = { startActivity(createIntentRecipesWindow()) }
                         ,colors = ButtonDefaults.buttonColors(
                             containerColor = Color.DarkGray,
                             contentColor = Color.White
-                        )) {
-                            Text("BROWSE")
+                        ),
+                            modifier = Modifier.padding(10.dp)) {
+                            Text("Browse", modifier = Modifier.padding(vertical = 5.dp, horizontal = 50.dp))
                         }
-                        Text(" ")
                         // Second activity button
                         Button(onClick = { startActivity(createIntentUploadWindow()) }
                             ,colors = ButtonDefaults.buttonColors(
                             containerColor = Color.DarkGray,
                             contentColor = Color.White
-                        )) {
-                            Text("UPLOAD")
+                        ),
+                            modifier = Modifier.padding(10.dp)) {
+                            Text("Upload", modifier = Modifier.padding(vertical = 5.dp, horizontal = 50.dp))
                         }
-                        Text(" ")
                         // Third activity button
                         Button(onClick = { startActivity(createIntentAccessYtWindow()) }
                             ,colors = ButtonDefaults.buttonColors(
                             containerColor = Color.DarkGray,
                             contentColor = Color.White
-                        )) {
-                            Text("SEARCH")
+                        ),
+                            modifier = Modifier.padding(10.dp)) {
+                            Text("Search", modifier = Modifier.padding(vertical = 5.dp, horizontal = 50.dp))
                         }
-                    }
                     Orientation()
                     Text(light.value, color = Color.White)
                     registerSensorListeners()
@@ -145,8 +145,9 @@ class MainActivity : ComponentActivity() {
         } ,colors = ButtonDefaults.buttonColors(
             containerColor = Color.DarkGray,
             contentColor = Color.White
-        )) {
-            Text("Orientation")
+        ),
+            modifier = Modifier.padding(10.dp)) {
+            Text("Orientation", modifier = Modifier.padding(vertical = 5.dp, horizontal = 40.dp))
         }
 
     }

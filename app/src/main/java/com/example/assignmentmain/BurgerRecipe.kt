@@ -161,7 +161,7 @@ fun Parallax() {
             }.background(color = Color.DarkGray),
             contentAlignment = Alignment.Center
         ) {
-            Text(text = "Beef burger")
+            Text(text = "Beef burger", color = Color.White)
         }
         }
     }

@@ -93,9 +93,9 @@ private fun ParallaxHummus() {
                 modifier = Modifier.padding(2.dp), color = Color.White)
             Text("Steps",
                 modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp), color = Color.White, fontSize = 18.sp)
-            Text("Step 1: Place the beetroots, chickpeas and garlic into a food processor and process for 1 minute until ground. Add all the remaining ingredients and process until creamy. It should have some grainy texture, that’s ok. If it’s dry or you want to thin it out and make it more creamy, add more tahini or water, until you like the consistency.\n" + "\n" +
-                    "Step 2: Adjust seasonings, adding more salt, cumin, olive oil, or lemon juice if needed.\n" + "\n" +
-                    "Step 3: Scrape into a serving bowl to use immediately. I like to serve it at room temperature. Refrigerate in an airtight container if you aren't serving right away.\n" + "\n" +
+            Text("Step 1:\n" + "Place the beetroots, chickpeas and garlic into a food processor and process for 1 minute until ground. Add all the remaining ingredients and process until creamy. It should have some grainy texture, that’s ok. If it’s dry or you want to thin it out and make it more creamy, add more tahini or water, until you like the consistency.\n" + "\n" +
+                    "Step 2:\n" + "Adjust seasonings, adding more salt, cumin, olive oil, or lemon juice if needed.\n" + "\n" +
+                    "Step 3:\n" + "Scrape into a serving bowl to use immediately. I like to serve it at room temperature. Refrigerate in an airtight container if you aren't serving right away.\n" + "\n" +
                     "Beetroot hummus will keep in the fridge, covered well, for 4-5 days.",
                 modifier = Modifier.padding(2.dp), color = Color.White)
         }
@@ -110,7 +110,7 @@ private fun ParallaxHummus() {
             .background(color = Color.DarkGray),
             contentAlignment = Alignment.Center
         ) {
-            Text(text = "Barbie hummus")
+            Text(text = "Barbie hummus", color = Color.White)
         }
     }
 }
