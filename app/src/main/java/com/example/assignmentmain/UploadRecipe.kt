@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
@@ -124,10 +125,8 @@ class UploadRecipe : ComponentActivity() {
                         )) {
                             Text("Submit", color = Color.White)
                         }
-                        Card(//elevation = CardDefaults.cardElevation(
-                            //defaultElevation = 6.dp
-                            //),
-                            modifier = Modifier
+                        // New recipe holder
+                        Card(modifier = Modifier
                                 .width(250.dp)
                                 .height(250.dp)
                                 .padding(5.dp)
@@ -153,7 +152,6 @@ class UploadRecipe : ComponentActivity() {
         }
     }
 
-
     // Function to access image folder
     private fun getImageBitmap(image_uri: Uri?): ImageBitmap {
         if (Build.VERSION.SDK_INT >= 28) {
@@ -178,6 +176,11 @@ class UploadRecipe : ComponentActivity() {
         }
 
         db.insert(DBOpenHelper.TABLE_NAME, null, values)
+
+        if (recipeText.isNullOrEmpty()) {
+            Toast.makeText(applicationContext, "Recipe can't be empty!", Toast.LENGTH_SHORT).show()
+        }
+        return
 
     }
 
