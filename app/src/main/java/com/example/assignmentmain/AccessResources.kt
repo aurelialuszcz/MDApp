@@ -4,11 +4,13 @@ import android.app.SearchManager
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -27,7 +29,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 class AccessResources : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
@@ -41,6 +47,26 @@ class AccessResources : ComponentActivity() {
                     contentDescription = "background",
                     contentScale = ContentScale.FillHeight,
                 )
+                Box(modifier = Modifier.fillMaxSize()) {
+                    // Window title
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(16.dp),
+                        verticalArrangement = Arrangement.Top,
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                    ) {
+                        Text(
+                            "Search for more inspiration",
+                            color = Color.White,
+                            fontFamily = FontFamily.Serif,
+                            fontSize = 36.sp,
+                            fontWeight = FontWeight.Bold,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier.padding(vertical = 16.dp)
+                        )
+                    }
+                }
                 Column(
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
@@ -110,7 +136,6 @@ class AccessResources : ComponentActivity() {
             }
             }
         }
-
     var recipe_lookup = mutableStateOf("Enter your search here!")
     }
 
