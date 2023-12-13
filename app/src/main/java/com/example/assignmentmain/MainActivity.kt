@@ -1,37 +1,29 @@
 package com.example.assignmentmain
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.content.pm.ActivityInfo
-import android.content.res.Configuration
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -41,14 +33,16 @@ import androidx.compose.ui.unit.sp
 
 @ExperimentalMaterial3Api
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             Surface(modifier = Modifier.fillMaxSize()){
-                Image(painter = painterResource(id = R.drawable.background),
+                Image(
+                    painter = painterResource(id = R.drawable.background),
                     contentDescription = "background",
                     contentScale = ContentScale.FillHeight,
-                    )
+                )
                 Column (
                     modifier = Modifier
                         .fillMaxSize()
@@ -103,10 +97,8 @@ class MainActivity : ComponentActivity() {
                             modifier = Modifier.padding(10.dp)) {
                             Text("Search", modifier = Modifier.padding(vertical = 5.dp, horizontal = 50.dp))
                         }
-                    Orientation()
-                    Text(light.value, color = Color.White)
                     registerSensorListeners()
-                }
+                    }
             }
         }
     }
@@ -129,29 +121,6 @@ class MainActivity : ComponentActivity() {
 
         return intent
     }
-
-    @Composable
-    fun Orientation() {
-        val activity = LocalContext.current as Activity
-        val configuration = LocalConfiguration.current
-
-        Button(onClick = {
-            if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-            }
-            else {
-                activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
-            }
-        } ,colors = ButtonDefaults.buttonColors(
-            containerColor = Color.DarkGray,
-            contentColor = Color.White
-        ),
-            modifier = Modifier.padding(10.dp)) {
-            Text("Orientation", modifier = Modifier.padding(vertical = 5.dp, horizontal = 40.dp))
-        }
-
-    }
-
     private fun registerSensorListeners() {
 
         var sm: SensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
@@ -162,14 +131,16 @@ class MainActivity : ComponentActivity() {
 
     private var light_listener: SensorEventListener = object : SensorEventListener {
         override fun onSensorChanged(event: SensorEvent?) {
-            light.value = "light: ${event!!.values[0]}"
+            if (event!!.values[0] > 60) {
+                Toast.makeText(applicationContext, "Too bright! Adjust your brightness levels.", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                Toast.makeText(applicationContext, null, Toast.LENGTH_SHORT).cancel()
+            }
         }
 
         override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
 
         }
     }
-
-    private var light = mutableStateOf("light: N/A")
-
 }
